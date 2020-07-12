@@ -9,20 +9,20 @@ model = pickle.load(open('model.pkl', 'rb'))
 def home():
     return render_template('index.html')
 
-@app.route('/templates', methods=['POST'])
+@app.route('/predict', methods=['POST'])
 def predict():
-    area = [int(x) for x in request.form.values()]
-    age = [int(y) for y in request.form.values()]
-    price = [int(z) for z in request.form.values()]
+    if request.method == 'POST':
+        area = float(request.form["area"])
+        age = float(request.form["age"])
+        room = float(request.form["room"])
+        #print(area, room, age)
+        
+        pred = model.predict([[area, age, room]])
+    #features = str(features)
+    #last = model.predict([[features]])
+    #print(features2)
 
-    area1= [np.array(area)]
-    age1 = [np.array(age)]
-    price1 = [np.array(price)]
-    prediction = model.predict(area1, age1, price1)
-    
-    output = round(prediction[0], 2)
-    
-    return render_template('index.html', prediction_text='The Price Will be $ {}'.formate(output))
+    return render_template("index.html", prediction_text = "price is : {}".format(pred))
 
 
 if __name__ =="__main__":
