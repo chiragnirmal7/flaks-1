@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<form method="POST" action="{{url_for('predict')}}">
+		<input type="text" name="area" />
+		<input type="text" name="age" />
+		<input type="text" name="room" />
+		<input type="submit" name="btn" value="Predict Score" />
+	</form>
+	{{ prediction_text }}
+</body>
+</html>
