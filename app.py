@@ -22,7 +22,7 @@ def predict():
     #last = model.predict([[features]])
     #print(features2)
 
-    return render_template("index.html", prediction_text = "price is : {}".format(pred))
+    return render_template("index.html", prediction_text = "Best Predicted Price is : {} Unit(s)" .format(round(pred[0],3)))
 
 
 if __name__ =="__main__":

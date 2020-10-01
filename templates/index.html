@@ -1,15 +1,36 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title></title>
+	<title>Price Prediction:Get near actual price</title>
+	<link rel="stylesheet" href="../static/style.css">
 </head>
+
 <body>
+	<header>Welcome: Get near actual prediction </header>
+	<div class="container">
 	<form method="POST" action="{{url_for('predict')}}">
-		<input type="text" name="area" />
-		<input type="text" name="age" />
-		<input type="text" name="room" />
-		<input type="submit" name="btn" value="Predict Score" />
+		<div class="input-field">
+			<label for="area">Enter Area</label>
+			<input type="text" id="area" name="area" placeholder="Please enter an integer number" />
+		</div>
+		<div class="input-field">
+			<label for="age">Age in years</label>
+			<input type="text" id="age" name="age" placeholder="Please enter an integer number"/>
+		</div>
+		<div class="input-field">
+			<label for="room">Enter number of Rooms</label>
+			<input type="text" id="room" name="room" placeholder="Please enter an integer number"/>
+		</div>
+		<div class="input-field">
+			<input type="submit" name="btn" value="Predict Price" />
+		</div>
 	</form>
-	{{ prediction_text }}
+	<div class="input-field">
+		<span class="prediction">{{ prediction_text }}</span>
+	</div>
+</div>
+
 </body>
+
 </html>
